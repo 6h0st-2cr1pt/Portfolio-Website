@@ -240,6 +240,67 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call on load and resize
     adjustMasonryLayout();
     window.addEventListener('resize', adjustMasonryLayout);
+
+    // Skills Progress Bar Animation
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillsBox = entry.target;
+                const progressBars = skillsBox.querySelectorAll('.skill-progress');
+
+                progressBars.forEach((bar, index) => {
+                    const level = bar.getAttribute('data-level');
+                    const skillName = bar.closest('.skill-item').querySelector('.skill-name');
+
+                    // Add percentage display to skill name
+                    skillName.setAttribute('data-level', level + '%');
+
+                    // Animate progress bar with delay for staggered effect
+                    setTimeout(() => {
+                        bar.style.width = level + '%';
+
+                        // Add a subtle pulse effect when animation completes
+                        setTimeout(() => {
+                            bar.style.boxShadow = '0 0 15px rgba(99, 102, 241, 0.5)';
+                            setTimeout(() => {
+                                bar.style.boxShadow = 'none';
+                            }, 600);
+                        }, 1500);
+                    }, index * 100);
+                });
+
+                // Unobserve after animation to prevent re-triggering
+                skillsObserver.unobserve(skillsBox);
+            }
+        });
+    }, observerOptions);
+
+    // Observe the skills box
+    const skillsBox = document.querySelector('.skills-box');
+    if (skillsBox) {
+        skillsObserver.observe(skillsBox);
+    }
+
+    // Add hover effects for skill items
+    const skillItems = document.querySelectorAll('.skill-item');
+    skillItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            const progressBar = this.querySelector('.skill-progress');
+            progressBar.style.filter = 'brightness(1.2)';
+            progressBar.style.transform = 'scaleY(1.2)';
+        });
+
+        item.addEventListener('mouseleave', function() {
+            const progressBar = this.querySelector('.skill-progress');
+            progressBar.style.filter = 'brightness(1)';
+            progressBar.style.transform = 'scaleY(1)';
+        });
+    });
 });
 
 // Platform-specific Animation Functions
