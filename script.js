@@ -1,45 +1,91 @@
-// Navigation active state
+// Navigation active state and hamburger menu
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link:not(.nav-highlight)');
-    
+    const hamburger = document.getElementById('hamburger-menu');
+    const navMenu = document.getElementById('nav-menu');
+    const body = document.body;
+
+    const closeMobileMenu = () => {
+        if (!navMenu) return;
+        navMenu.classList.remove('open');
+        if (hamburger) {
+            hamburger.classList.remove('is-active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+        body.classList.remove('nav-open');
+    };
+
+    const toggleMobileMenu = () => {
+        if (!navMenu || !hamburger) return;
+        const isOpen = navMenu.classList.toggle('open');
+        hamburger.classList.toggle('is-active', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        body.classList.toggle('nav-open', isOpen);
+    };
+
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function() {
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
+            if (window.innerWidth <= 768) {
+                closeMobileMenu();
+            }
         });
     });
 
-    // Set HOME as active by default
-    navLinks[0].classList.add('active');
-
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const name = this.querySelector('input[placeholder="Name"]').value;
-            const email = this.querySelector('input[placeholder="Email"]').value;
-            const subject = this.querySelector('input[placeholder="Subject"]').value;
-            const message = this.querySelector('textarea[placeholder="Message"]').value;
-            
-            if (name && email && subject && message) {
-                alert(`Thank you ${name}! Your message has been sent.`);
-                this.reset();
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', toggleMobileMenu);
+        hamburger.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMobileMenu();
             }
         });
     }
 
-    // Smooth scroll for navigation links
+    document.addEventListener('click', function(event) {
+        if (!navMenu || !hamburger) return;
+        if (!navMenu.classList.contains('open')) return;
+        const clickInsideMenu = navMenu.contains(event.target);
+        const clickOnHamburger = hamburger.contains(event.target);
+        if (!clickInsideMenu && !clickOnHamburger) {
+            closeMobileMenu();
+        }
+    });
+
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeMobileMenu();
+        }
+    });
+
+    if (navLinks.length > 0) {
+        navLinks[0].classList.add('active');
+    }
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[placeholder="Name"]').value;
+            const email = this.querySelector('input[placeholder="Email"]').value;
+            const subject = this.querySelector('input[placeholder="Subject"]').value;
+            const message = this.querySelector('textarea[placeholder="Message"]').value;
+            if (name && email && subject && message) {
+                alert(`Thank you ${name}! Your message has been sent.`);
+                this.reset();
+                closeMobileMenu();
+            }
+        });
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href !== '#' && document.querySelector(href)) {
+            const target = href && document.querySelector(href);
+            if (href !== '#' && target) {
                 e.preventDefault();
-                document.querySelector(href).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
@@ -49,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Horizontal Masonry Footer Animations
     const footerCards = document.querySelectorAll('.footer-card');
-    const observerOptions = {
+    const footerObserverOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
@@ -67,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, delay * 1000);
             }
         });
-    }, observerOptions);
+    }, footerObserverOptions);
 
     footerCards.forEach(card => {
         card.style.opacity = '0';
@@ -242,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', adjustMasonryLayout);
 
     // Skills Progress Bar Animation
-    const observerOptions = {
+    const skillsObserverOptions = {
         threshold: 0.3,
         rootMargin: '0px 0px -50px 0px'
     };
@@ -250,8 +296,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const skillsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const skillsBox = entry.target;
-                const progressBars = skillsBox.querySelectorAll('.skill-progress');
+                const skillsSection = entry.target;
+                const progressBars = skillsSection.querySelectorAll('.skill-progress');
 
                 progressBars.forEach((bar, index) => {
                     const level = bar.getAttribute('data-level');
@@ -275,15 +321,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // Unobserve after animation to prevent re-triggering
-                skillsObserver.unobserve(skillsBox);
+                skillsObserver.unobserve(skillsSection);
             }
         });
-    }, observerOptions);
+    }, skillsObserverOptions);
 
-    // Observe the skills box
-    const skillsBox = document.querySelector('.skills-box');
-    if (skillsBox) {
-        skillsObserver.observe(skillsBox);
+    // Observe the skills section
+    const skillsSection = document.querySelector('.skills-section');
+    if (skillsSection) {
+        skillsObserver.observe(skillsSection);
     }
 
     // Add hover effects for skill items

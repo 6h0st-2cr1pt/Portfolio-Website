@@ -10,7 +10,12 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <ul class="nav-menu">
+            <div class="hamburger" id="hamburger-menu" aria-label="Open navigation" aria-expanded="false" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link active">HOME</a></li>
                 <li><a href="#about" class="nav-link">ABOUT ME</a></li>
                 <li><a href="#skills" class="nav-link">SKILLS</a></li>
@@ -37,7 +42,7 @@
             </div>
 
             <!-- Skills -->
-            <div class="skills-box" id="skills">
+            <section class="profile-panel skills-section" id="skills">
                 <h3>SKILLS</h3>
                 <div class="skills-content">
                     <div class="skills-column">
@@ -236,15 +241,76 @@
                             </div>
                         </div>
                     </div>
+            </section>
+            <!-- Certifications -->
+            <section class="profile-panel certifications-section" id="certifications">
+                <div class="certifications-header">
+                    <h4>CERTIFICATIONS</h4>
                 </div>
-            </div>
+                <div class="certifications-list">
+                    <article class="cert-card">
+                        <img src="assets/certificates/Cisco Certificate to Jonald Sabordo.png" alt="Introduction to Data Science" class="cert-image">
+                        <div class="cert-info">
+                            <p class="cert-title">Introduction to Data Science</p>
+                            <p class="cert-provider">CISCO • Issued November 14, 2024</p>
+                            <p class="cert-description">Data Analytics • Data Collection • Data Validation</p>
+                            <a href="https://www.credly.com/badges/9ebe761e-e835-4628-932a-cbfa9dcccbe5/public_url" target="_blank" class="cert-link">View Credential</a>
+                        </div>
+                    </article>
+                    <article class="cert-card">
+                        <img src="assets/certificates/Google Aanalytics Certificate.jpg" alt="Google Analytics" class="cert-image">
+                        <div class="cert-info">
+                            <p class="cert-title">Google Analytics</p>
+                            <p class="cert-provider">Google Skillshop • Issued November 20, 2024 • Credential ID 123413884</p>
+                            <p class="cert-description">GA4 Setup • Data Collection • Marketing Attribution Reporting</p>
+                            <a href="https://skillshop.credential.net/14b2a8a6-b6a0-401f-ab97-d51359b2c575#acc.FNApe0T8" target="_blank" class="cert-link">View Credential</a>
+                        </div>
+                    </article>
+                    <article class="cert-card">
+                        <img src="assets/certificates/IBM Cloud Essentials.jpg" alt="Cloud Essential" class="cert-image">
+                        <div class="cert-info">
+                            <p class="cert-title">Cloud Essential</p>
+                            <p class="cert-provider">IBM • Issued December 5, 2024 • Credential ID 3da8ef6b04de44e2bbdc44afc2da6948</p>
+                            <p class="cert-description">IBM Cloud Deployment • DevOps • Database Services</p>
+                            <a href="https://courses.cognitiveclass.ai/certificates/3da8ef6b04de44e2bbdc44afc2da6948" target="_blank" class="cert-link">View Credential</a>
+                        </div>
+                    </article>
+                    <article class="cert-card">
+                        <img src="assets/certificates/IBM Docker.png" alt="Docker Essentials" class="cert-image">
+                        <div class="cert-info">
+                            <p class="cert-title">Docker Essentials</p>
+                            <p class="cert-provider">IBM • Issued November 28, 2024 • Credential ID 5d4fba0872af49c3b9201d9269a0f063</p>
+                            <p class="cert-description">Docker Images • CI/CD • Docker Swarm Orchestration</p>
+                            <a href="https://courses.cognitiveclass.ai/certificates/5d4fba0872af49c3b9201d9269a0f063" target="_blank" class="cert-link">View Credential</a>
+                        </div>
+                    </article>
+                    <article class="cert-card">
+                        <img src="assets/certificates/IBM Kubernetes.jpg" alt="Kubernetes" class="cert-image">
+                        <div class="cert-info">
+                            <p class="cert-title">Kubernetes</p>
+                            <p class="cert-provider">IBM • Issued December 6, 2024 • Credential ID e726edb71ff046e19e54fe9e0dbf5a6c</p>
+                            <p class="cert-description">Container Orchestration • Kubernetes Architecture</p>
+                            <a href="https://courses.cognitiveclass.ai/certificates/e726edb71ff046e19e54fe9e0dbf5a6c" target="_blank" class="cert-link">View Credential</a>
+                        </div>
+                    </article>
+                    <article class="cert-card">
+                        <img src="assets/certificates/IBM Python for Data Science.jpg" alt="Data Science" class="cert-image">
+                        <div class="cert-info">
+                            <p class="cert-title">Data Science</p>
+                            <p class="cert-provider">IBM • Issued October 11, 2025 • Credential ID 45ede00b04284322a21d610be90e9a3d</p>
+                            <p class="cert-description">Python Fundamentals • Data Manipulation • API Integration</p>
+                            <a href="https://courses.cognitiveclass.ai/certificates/45ede00b04284322a21d610be90e9a3d" target="_blank" class="cert-link">View Credential</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </section>
 
         <!-- Middle Section: Education & Experience -->
         <section class="middle-section" id="about">
             <!-- Education -->
             <div class="education-box">
-                <h3>EDUCATION</h3>
+                <h3>EDUCATION AND ACHIEVEMENT</h3>
                 <div class="education-content">
                     <div class="education-item">
                         <img src="assets/logo/ETH.png" alt="ETH Zurich Logo" class="education-logo">
@@ -402,75 +468,6 @@
                 </div>
             </div>
 
-            <!-- Certification -->
-            <div class="responsibility-box">
-                <h3>CERTIFICATION</h3>
-                <div class="responsibility-item">
-                    <img src="assets/certificates/Cisco Certificate to Jonald Sabordo.png" alt="Introduction to Data Science" class="responsibility-image">
-                    <div class="responsibility-details">
-                        <p class="job-title">Introduction to Data Science</p>
-                        <p class="company">CISCO</p>
-                        <p class="company">Issue Date: November 14, 2024</p>
-                        <p class="company">Skills Acquired: Data Analytics, Data collection, Data Validation</p>
-                        <a href="https://www.credly.com/badges/9ebe761e-e835-4628-932a-cbfa9dcccbe5/public_url" target="_blank">View Credential</a>
-                    </div>
-                </div>
-                <div class="responsibility-item">
-                    <img src="assets/certificates/Google Aanalytics Certificate.jpg" alt="Google Analytics" class="responsibility-image">
-                    <div class="responsibility-details">
-                        <p class="job-title">Google Analytics</p>
-                        <p class="company">Google Skillshop</p>
-                        <p class="company">Issue Date: November 20, 2024</p>
-                        <p class="company">Credential ID: 123413884</p>
-                        <p class="company">Skills Acquired: Setup a Google Analytics 4 property for a website or an app. Collect the data you need for your business and use the various reporting tools and features. Recognize key measurement features that can show the effectiveness of your online marketing efforts.</p>
-                        <a href="https://skillshop.credential.net/14b2a8a6-b6a0-401f-ab97-d51359b2c575#acc.FNApe0T8" target="_blank">View Credential</a>
-                    </div>
-                </div>
-                <div class="responsibility-item">
-                    <img src="assets/certificates/IBM Cloud Essentials.jpg" alt="Cloud Essential" class="responsibility-image">
-                    <div class="responsibility-details">
-                        <p class="job-title">Cloud Essential</p>
-                        <p class="company">IBM</p>
-                        <p class="company">Issue Date: December 5, 2024</p>
-                        <p class="company">Credential ID: 3da8ef6b04de44e2bbdc44afc2da6948</p>
-                        <p class="company">Skills Acquired: Deploying Applications, Services on IBM Cloud, DevOps, Database</p>
-                        <a href="https://courses.cognitiveclass.ai/certificates/3da8ef6b04de44e2bbdc44afc2da6948" target="_blank">View Credential</a>
-                    </div>
-                </div>
-                <div class="responsibility-item">
-                    <img src="assets/certificates/IBM Docker.png" alt="Docker Essentials" class="responsibility-image">
-                    <div class="responsibility-details">
-                        <p class="job-title">Docker Essentials</p>
-                        <p class="company">IBM</p>
-                        <p class="company">Issue Date: November 28, 2024</p>
-                        <p class="company">Credential ID: 5d4fba0872af49c3b9201d9269a0f063</p>
-                        <p class="company">Skills Acquired: CI/CD value with Docker images, Orchestrate applications with Docker Swarm</p>
-                        <a href="https://courses.cognitiveclass.ai/certificates/5d4fba0872af49c3b9201d9269a0f063" target="_blank">View Credential</a>
-                    </div>
-                </div>
-                <div class="responsibility-item">
-                    <img src="assets/certificates/IBM Kubernetes.jpg" alt="Kubernetes" class="responsibility-image">
-                    <div class="responsibility-details">
-                        <p class="job-title">Kubernetes</p>
-                        <p class="company">IBM</p>
-                        <p class="company">Issue Date: December 6, 2024</p>
-                        <p class="company">Credential ID: e726edb71ff046e19e54fe9e0dbf5a6c</p>
-                        <p class="company">Skills Acquired: Container Orchestration, Kubernetes Architecture</p>
-                        <a href="https://courses.cognitiveclass.ai/certificates/e726edb71ff046e19e54fe9e0dbf5a6c" target="_blank">View Credential</a>
-                    </div>
-                </div>
-                <div class="responsibility-item">
-                    <img src="assets/certificates/IBM Python for Data Science.jpg" alt="Data Science" class="responsibility-image">
-                    <div class="responsibility-details">
-                        <p class="job-title">Data Science</p>
-                        <p class="company">IBM</p>
-                        <p class="company">Issue Date: October 11, 2025</p>
-                        <p class="company">Credential ID: 45ede00b04284322a21d610be90e9a3d</p>
-                        <p class="company">Skills Acquired: Python Programming Fundamentals, Working with Data in Python, Working with Numpy Arrays & Simple APIs</p>
-                        <a href="https://courses.cognitiveclass.ai/certificates/45ede00b04284322a21d610be90e9a3d" target="_blank">View Credential</a>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- Right Section: Projects -->
@@ -506,6 +503,16 @@
                     <img src="https://i.pinimg.com/originals/01/25/ca/0125ca2b3bc24d36f2f29a0b77acddec.gif" alt="Cybersecurity Operations">
                     <h4>CYBERSECURITY OPERATIONS</h4>
                     <p>Red Team & Blue Team operations, SOC analysis, and CERT team activities for enterprise security</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://www.ngdc.noaa.gov/mgg/image/turninglobe.gif" alt="USGS Earthquake Prediction">
+                    <h4>USGS - EARTHQUAKE PREDICTION MODEL</h4>
+                    <p>Machine learning seismic prediction platform integrating telemetry, geospatial data, and early warning pipelines for proactive disaster response</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://farmersreviewafrica.com/wp-content/uploads/2022/11/Aeroponic-roots-003.gif" alt="UN Climate Resilient Farm">
+                    <h4>UN TIL - CLIMATE RESILIENT AEROPONICS</h4>
+                    <p>Climate-controlled aeroponic infrastructure delivering resilient food systems through adaptive climate analytics and autonomous nutrient management</p>
                 </div>
             </div>
 
